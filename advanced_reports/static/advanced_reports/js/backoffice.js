@@ -770,23 +770,3 @@ app.directive('boModal', function(){
         }
     };
 });
-
-app.directive('boParallax', function(){
-    return function(scope, element, attrs){
-        scope.$watch(function(){
-            return element.innerHeight();
-        }, function(height){
-            var offsetTop = $('body').offset().top,
-                scrollTop = $(window).scrollTop(),
-                orgHeight = element.innerHeight();
-
-            $(window).unbind('scroll').bind('scroll', function(){
-                scrollTop = $(window).scrollTop();
-                
-                if (offsetTop >= scrollTop && scrollTop < 0) {
-                    element.css('height', (orgHeight + -scrollTop) + 'px');
-                }
-            });
-        });
-    };
-});
